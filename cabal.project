@@ -1,0 +1,9 @@
+write-ghc-environment-files: always
+tests: true
+benchmarks: true
+packages:
+    .
+allow-newer:
+    miso:servant,
+    servant-lucid:servant,
+    lucid-svg:transformers,
