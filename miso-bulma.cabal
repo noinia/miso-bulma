@@ -45,7 +45,8 @@ library
         Miso.Bulma.Generic
         Miso.Bulma.Panel
         Miso.Bulma.JSAddle
-    -- other-modules:
+    other-modules:
+        Paths_miso_bulma
     -- other-extensions:
     hs-source-dirs:   src
 
