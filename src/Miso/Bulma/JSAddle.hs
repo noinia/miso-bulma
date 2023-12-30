@@ -10,7 +10,7 @@ module Miso.Bulma.JSAddle
   ) where
 
 import           Data.ByteString.Lazy (ByteString, fromStrict)
-import           Data.FileEmbed (embedFile)
+import           Data.FileEmbed (makeRelativeToProject, embedFile)
 import           Language.Javascript.JSaddle.Run (syncPoint)
 import           Language.Javascript.JSaddle.Types (JSM)
 import           Language.Javascript.JSaddle.WebSockets (jsaddleJs, jsaddleOr)
@@ -18,6 +18,7 @@ import           Network.HTTP.Types (status200,status403)
 import qualified Network.Wai as Wai
 import           Network.Wai.Handler.Warp (defaultSettings, setTimeout, setPort, runSettings)
 import           Network.WebSockets (defaultConnectionOptions)
+-- import           Paths_miso_bulma
 
 --------------------------------------------------------------------------------
 
@@ -64,4 +65,5 @@ defaultOptions = BulmaJSAddleOptions
                  }
 
 withBulmaCDNFile :: ByteString
-withBulmaCDNFile = fromStrict $ $(embedFile "resources/indexWithBulmaCDN.html")
+withBulmaCDNFile = fromStrict $
+                   $(makeRelativeToProject "resources/indexWithBulmaCDN.html" >>= embedFile)

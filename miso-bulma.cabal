@@ -12,6 +12,9 @@ category:           Web
 build-type:         Simple
 extra-doc-files:    changelog.org
 -- extra-source-files:
+data-dir: resources
+data-files:
+    indexWithBulmaCDN.html
 
 tested-with: GHC == 9.6.1
 
