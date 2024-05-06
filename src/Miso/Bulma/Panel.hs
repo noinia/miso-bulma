@@ -19,4 +19,4 @@ panelBlock = div_ [class_ "panel-block"]
 
 panelIcon   :: MisoString -> View action
 panelIcon i = span_ [ class_ "panel-icon"]
-                    [ icon i]
+                    [ icon i [] ]

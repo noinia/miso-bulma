@@ -4,8 +4,10 @@ module Miso.Bulma.Generic
   , bulmaLink
   , iconLink
   , icon
+  , styleM_
   ) where
 
+import qualified Data.Map as Map
 import           Miso
 import           Miso.String (MisoString)
 
@@ -32,8 +34,18 @@ iconLink = Miso.script_ [ src_ "https://use.fontawesome.com/releases/v5.3.1/js/a
 --------------------------------------------------------------------------------
 
 -- | Produce an icon
-icon    :: MisoString -> View action
-icon cs = i_ [ class_ cs, textProp "aria-hidden" "true"] []
+icon      :: MisoString -- ^ icon name
+          -> [Attribute action] -- ^ attributes
+          -> View action
+icon cs ats = span_ ([ class_ "icon"]
+                     <> ats
+                    )
+                    [ i_ [ class_ cs, textProp "aria-hidden" "true"] []
+                    ]
 
 
---
+--------------------------------------------------------------------------------
+
+-- | Style attribute, convenient together with '=:'
+styleM_    :: [Map.Map MisoString MisoString] -> Attribute action
+styleM_ xs = style_ $ mconcat xs
