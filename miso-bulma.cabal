@@ -39,6 +39,10 @@ common setup
 
     default-extensions:
         ScopedTypeVariables
+      , LambdaCase
+      , ViewPatterns
+      , DerivingStrategies
+      , DerivingVia
 
 library
     import:           setup
@@ -47,6 +51,7 @@ library
         Miso.Bulma.Panel
         Miso.Bulma.JSAddle
         Miso.Bulma.Color
+        Miso.Bulma.Columns
 
     other-modules:
         Paths_miso_bulma

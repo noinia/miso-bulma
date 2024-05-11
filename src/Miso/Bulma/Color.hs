@@ -1,3 +1,4 @@
+{-# LANGUAGE OverloadedStrings          #-}
 module Miso.Bulma.Color
   ( BulmaColor(..)
   , colorClass
