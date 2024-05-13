@@ -52,6 +52,7 @@ library
         Miso.Bulma.JSAddle
         Miso.Bulma.Color
         Miso.Bulma.Columns
+        Miso.Bulma.NavBar
 
     other-modules:
         Paths_miso_bulma
