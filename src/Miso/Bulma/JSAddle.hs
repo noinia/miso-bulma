@@ -4,6 +4,9 @@
 module Miso.Bulma.JSAddle
   ( run
   , runWith
+  , debug
+  , debugWith
+
   , jsaddleAppWithBulma
   , BulmaJSAddleOptions(..)
   , defaultOptions
@@ -13,7 +16,7 @@ import           Data.ByteString.Lazy (ByteString, fromStrict)
 import           Data.FileEmbed (makeRelativeToProject, embedFile)
 import           Language.Javascript.JSaddle.Run (syncPoint)
 import           Language.Javascript.JSaddle.Types (JSM)
-import           Language.Javascript.JSaddle.WebSockets (jsaddleJs, jsaddleOr)
+import           Language.Javascript.JSaddle.WebSockets (jsaddleJs, jsaddleOr, debugOr)
 import           Network.HTTP.Types (status200,status403)
 import qualified Network.Wai as Wai
 import           Network.Wai.Handler.Warp (defaultSettings, setTimeout, setPort, runSettings)
@@ -32,6 +35,17 @@ runWith             :: BulmaJSAddleOptions -> Int -> JSM () -> IO ()
 runWith opts port f =
     runSettings (setPort port (setTimeout 3600 defaultSettings)) =<<
         jsaddleOr defaultConnectionOptions (f >> syncPoint) (jsaddleAppWithBulma opts)
+
+-- | Run a debugging instance to allow easy reloading; using the default BulmaJSOptions.
+debug :: Int -> JSM () -> IO ()
+debug = debugWith defaultOptions
+
+-- | Run a JSM action that uses bulma in debuggin mode. Allows specifying bulmaJSAddle
+-- options.
+debugWith             :: BulmaJSAddleOptions -> Int -> JSM () -> IO ()
+debugWith opts port f = debugOr port f (jsaddleAppWithBulma opts)
+
+--------------------------------------------------------------------------------
 
 -- | Application that serves the paths:
 --
