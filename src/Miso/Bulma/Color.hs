@@ -1,4 +1,14 @@
 {-# LANGUAGE OverloadedStrings          #-}
+--------------------------------------------------------------------------------
+-- |
+-- Module      :  Miso.Bulma.Color
+-- Copyright   :  (C) Frank Staals
+-- License     :  see the LICENSE file
+-- Maintainer  :  Frank Staals
+--
+-- Dealing with Bulma Colors
+--
+--------------------------------------------------------------------------------
 module Miso.Bulma.Color
   ( BulmaColor(..)
   , colorClass
