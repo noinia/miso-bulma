@@ -16,7 +16,9 @@ data-dir: resources
 data-files:
     indexWithBulmaCDN.html
 
-tested-with: GHC == 9.6.1
+tested-with:
+    GHC == 9.10.1
+  , GHC == 9.8.2
 
 common setup
     ghc-options: -Wall
