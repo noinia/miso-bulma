@@ -53,7 +53,7 @@ data ModalAction = ToggleModalStatus
   deriving (Show,Read,Eq,Ord)
 
 -- | Handles internal modal actions, in particular support toggling
-handleModalAction         :: Status -> ModalAction -> Effect action Status
+handleModalAction         :: Status -> ModalAction -> Effect Status action
 handleModalAction status' = \case
   ToggleModalStatus -> noEff $ toggleStatus status'
 

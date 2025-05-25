@@ -47,5 +47,5 @@ icon cs ats = span_ ([ class_ "icon"]
 --------------------------------------------------------------------------------
 
 -- | Style attribute, convenient together with '=:'
-styleM_    :: [Map.Map MisoString MisoString] -> Attribute action
-styleM_ xs = style_ $ mconcat xs
+styleM_ :: [Map.Map MisoString MisoString] -> Attribute action
+styleM_ = Styles . mconcat
