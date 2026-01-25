@@ -24,7 +24,9 @@ module Miso.Bulma.Modal
 
 import Control.Lens hiding (view, element)
 import Miso
-import Miso.String (MisoString)
+import Miso.Html.Element
+import Miso.Html.Property
+import Miso.Html.Event
 
 --------------------------------------------------------------------------------
 
@@ -53,14 +55,14 @@ data ModalAction = ToggleModalStatus
   deriving (Show,Read,Eq,Ord)
 
 -- | Handles internal modal actions, in particular support toggling
-handleModalAction         :: Status -> ModalAction -> Effect Status action
+handleModalAction         :: Status -> ModalAction -> Effect parent Status action
 handleModalAction status' = \case
-  ToggleModalStatus -> noEff $ toggleStatus status'
+  ToggleModalStatus -> put $ toggleStatus status'
 
 
 
 -- | Renders a modal
-modal_                :: Status -> [View action] -> View (Either ModalAction action)
+modal_                :: Status -> [View model action] -> View model (Either ModalAction action)
 modal_ status' content =
   modalWith status'
     [ div_ [class_ "modal-content"]
@@ -74,9 +76,9 @@ modal_ status' content =
 -- | Renders a modal card
 modalCard_                                         :: Status
                                                    -> MisoString -- ^ the title
-                                                   -> [View action] -- ^ body content
-                                                   -> [View action] -- ^ footer content
-                                                   -> View (Either ModalAction action)
+                                                   -> [View model action] -- ^ body content
+                                                   -> [View model action] -- ^ footer content
+                                                   -> View model (Either ModalAction action)
 modalCard_ status' title bodyContent footerContent =
   modalWith status'
     [ div_ [class_ "modal-card"]
@@ -96,7 +98,7 @@ modalCard_ status' title bodyContent footerContent =
     ]
 
 -- | Helper function to implement the common stuff of modal and modalCard
-modalWith                 :: Status -> [View action] -> View action
+modalWith                 :: Status -> [View model action] -> View model action
 modalWith status' content =
     div_ [ class_ "modal"
          , class_ $ case status' of

@@ -7,17 +7,18 @@ module Miso.Bulma.Panel
   , panelTabs
   ) where
 
-import           Miso
-import           Miso.String (MisoString)
-import           Miso.Bulma.Generic
+import Miso
+import Miso.Bulma.Generic
+import Miso.Html.Element
+import Miso.Html.Property
 
 --------------------------------------------------------------------------------
 
 -- | Renders a panel
 panel                 :: [Attribute action]
-                      -> [View action] -- ^ The heading
-                      -> [View action] -- ^ The content
-                      -> View action
+                      -> [View model action] -- ^ The heading
+                      -> [View model action] -- ^ The content
+                      -> View model action
 panel ats heading chs =
     nav_ ([class_ "panel"] <> ats)
          ([p_ [class_ "panel-heading"] heading
@@ -26,15 +27,15 @@ panel ats heading chs =
          )
 
 -- | A div that is a panel block
-panelBlock :: [View action] -> View action
+panelBlock :: [View model action] -> View model action
 panelBlock = div_ [class_ "panel-block"]
 
 -- | A panel icon
-panelIcon   :: MisoString -> View action
+panelIcon   :: MisoString -> View model action
 panelIcon i = span_ [ class_ "panel-icon"]
                     [ icon i [] ]
 
 
 -- | Panel tabs
-panelTabs :: [View action] -> View action
+panelTabs :: [View model action] -> View model action
 panelTabs = p_ [class_ "panel-tabs"]

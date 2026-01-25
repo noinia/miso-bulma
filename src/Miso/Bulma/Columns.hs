@@ -6,13 +6,15 @@ module Miso.Bulma.Columns
 
 
 import Miso
+import Miso.Html.Element
+import Miso.Html.Property
 
 --------------------------------------------------------------------------------
 
 -- | A Section with Columns
-columns_     :: [Attribute action] -> [View action] -> View action
+columns_     :: [Attribute action] -> [View model action] -> View model action
 columns_ ats = section_ ([class_ "columns"] <> ats)
 
 -- | A single column
-column_     :: [Attribute action] -> [View action] -> View action
+column_     :: [Attribute action] -> [View model action] -> View model action
 column_ ats = div_ ([class_ "column"] <> ats)
