@@ -30,7 +30,6 @@ common setup
       , file-embed                >= 0.0.15        && < 0.1
       , bytestring                >= 0.11          && < 1
       , template-haskell          >= 2.10          && < 3
-      , http-types                >= 0.12          && < 0.13
       , containers                >= 0.6           && < 0.8
 
     default-extensions:
@@ -45,7 +44,6 @@ library
     exposed-modules:
         Miso.Bulma.Generic
         Miso.Bulma.Panel
-        -- Miso.Bulma.JSAddle
         Miso.Bulma.Color
         Miso.Bulma.Columns
         Miso.Bulma.NavBar
