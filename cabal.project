@@ -3,12 +3,12 @@ tests: true
 benchmarks: true
 packages:
     .
-allow-newer:
-    miso:servant,
-    miso:jsaddle,
-    servant-lucid:servant,
-    lucid-svg:transformers,
+-- allow-newer:
+    -- miso:servant,
+    -- miso:jsaddle,
+    -- servant-lucid:servant,
+    -- lucid-svg:transformers,
 
-source-repository-package
-    type: git
-    location: https://github.com/noinia/miso
+-- source-repository-package
+--     type: git
+--     location: https://github.com/noinia/miso

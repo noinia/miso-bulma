@@ -29,7 +29,7 @@ bulmaLink = link_ [ rel_ "stylesheet"
 -- | Produce a linked icon
 iconLink :: View model action
 iconLink = script_ [ src_ "https://use.fontawesome.com/releases/v5.14.4/js/all.js"
-                   , defer_ "true"
+                   , defer_ True
                    ] mempty
 
 --------------------------------------------------------------------------------
