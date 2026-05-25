@@ -55,7 +55,7 @@ data ModalAction = ToggleModalStatus
   deriving (Show,Read,Eq,Ord)
 
 -- | Handles internal modal actions, in particular support toggling
-handleModalAction         :: Status -> ModalAction -> Effect parent Status action
+handleModalAction         :: Status -> ModalAction -> Effect parent props Status action
 handleModalAction status' = \case
   ToggleModalStatus -> put $ toggleStatus status'
 
