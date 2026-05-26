@@ -2,7 +2,8 @@ cabal-version:      3.4
 name:               miso-bulma
 version:            0.1.0.0
 synopsis:           Utilities for using Bulma with miso
--- description:
+description:
+    Utilities for using the Bulma CSS framework with miso
 license:            MIT
 license-file:       LICENSE
 author:             Frank Staals
@@ -20,6 +21,10 @@ tested-with:
     GHC == 9.14.1
   , GHC == 9.12.2
   , GHC == 9.10.1
+
+source-repository head
+  type:     git
+  location: https://github.com/noinia/miso-bulma
 
 common setup
     ghc-options: -Wall
@@ -53,7 +58,10 @@ library
     other-modules:
         Paths_miso_bulma
     -- other-extensions:
+
     hs-source-dirs:   src
+    autogen-modules:
+      Paths_miso_bulma
 
 test-suite miso-bulma-test
     import:           setup
